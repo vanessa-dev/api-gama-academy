@@ -2,7 +2,7 @@
   "transacao":[
     {
       "id" : 1,
-      "tipo": "E",
+      "tipo": "receita",
       "valor" : 2.99,
       "categoria": 2,
       "descricao": "Meu primeiro lancamento de entrada",
@@ -10,9 +10,74 @@
     }
   ],
   "categoria":{
-    "entrada": {
-      "id" : 2,
-      "nome": "dinheiro"
-    }
+    "receita": [
+      {
+        "id" : 1,
+        "nome": "Salário"
+      },
+      {
+        "id" : 2,
+        "nome": "Investimentos"
+      },
+      {
+        "id" : 3,
+        "nome": "Emprestimos"
+      },
+      {
+        "id" : 4,
+        "nome": "Outras Receitas"
+      }
+    ],
+    "despesa": [
+      {
+        "id" : 1,
+        "nome": "Alimentação"
+      },
+      {
+        "id" : 2,
+        "nome": "Assinaturas e Serviços"
+      },
+      {
+        "id" : 3,
+        "nome": "Bares e Restaurantes"
+      },
+      {
+        "id" : 4,
+        "nome": "Casa"
+      },
+      {
+        "id" : 5,
+        "nome": "Compras"
+      },
+      {
+        "id" : 6,
+        "nome": "Cuidados Pessoais"
+      },
+      {
+        "id" : 7,
+        "nome": "Dívidas"
+      },
+      {
+        "id" : 8,
+        "nome": "Educação"
+      },
+      {
+        "id" : 9,
+        "nome": "Lazer"
+      },
+      {
+        "id" : 10,
+        "nome": "Mercado"
+      },
+      {
+        "id" : 11,
+        "nome": "Saúde"
+      },
+      {
+        "id" : 12,
+        "nome": "Transporte"
+      }
+    ]
+      
   }
 }
