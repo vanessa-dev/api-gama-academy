@@ -1,16 +1,18 @@
 {
-  "posts":[
+  "transacao":[
     {
-      "id" : 0,
-      "title": "First post!",
-      "content" : "My first content!"
+      "id" : 1,
+      "tipo": "E",
+      "valor" : 2.99,
+      "categoria": 2,
+      "descricao": "Meu primeiro lancamento de entrada",
+      "data": "2022-08-12"
     }
   ],
-  "comments" : [
-    {
-      "id": 0,
-      "content": "Wow such content!",
-      "username": "zero_cool"
+  "categoria":{
+    "entrada": {
+      "id" : 2,
+      "nome": "dinheiro"
     }
-  ]
+  }
 }
