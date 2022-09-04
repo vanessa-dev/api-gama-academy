@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "build": "node server.js --routes routes.json"
+    "heroku-postbuild": "json-server db.json --routes routes.json --prod"
   },
   "keywords": [
     "json-server,heroku, node, REST API"
