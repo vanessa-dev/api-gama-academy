@@ -1,83 +1,102 @@
 {
   "transacao":[
     {
-      "id" : 1,
+      "id" : "4fd6f07f-3de7-4155-8712-ad111d0b0892",
       "tipo": "receita",
       "valor" : 2.99,
-      "categoria": 2,
+      "categoria": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
       "descricao": "Meu primeiro lancamento de entrada",
+      "data": "2022-08-12"
+    },
+    {
+      "id" : "3b715689-b1aa-4669-b834-49ab252b2489",
+      "tipo": "despesa",
+      "valor" : 5.99,
+      "categoria": "40042151-37c2-4c34-bf6c-54fa10904e7a",
+      "descricao": "Meu primeiro lancamento de saida",
       "data": "2022-08-12"
     }
   ],
-  "categoria":{
-    "receita": [
-      {
-        "id" : 1,
-        "nome": "Emprestimos"
-      },
-      {
-        "id" : 2,
-        "nome": "Investimentos"
-      },
-      {
-        "id" : 3,
-        "nome": "Outras Receitas"
-      },
-      {
-        "id" : 4,
-        "nome": "Salário"
-      }
-    ],
-    "despesa": [
-      {
-        "id" : 1,
-        "nome": "Alimentação"
-      },
-      {
-        "id" : 2,
-        "nome": "Assinaturas e Serviços"
-      },
-      {
-        "id" : 3,
-        "nome": "Bares e Restaurantes"
-      },
-      {
-        "id" : 4,
-        "nome": "Casa"
-      },
-      {
-        "id" : 5,
-        "nome": "Compras"
-      },
-      {
-        "id" : 6,
-        "nome": "Cuidados Pessoais"
-      },
-      {
-        "id" : 7,
-        "nome": "Dívidas"
-      },
-      {
-        "id" : 8,
-        "nome": "Educação"
-      },
-      {
-        "id" : 9,
-        "nome": "Lazer"
-      },
-      {
-        "id" : 10,
-        "nome": "Mercado"
-      },
-      {
-        "id" : 11,
-        "nome": "Saúde"
-      },
-      {
-        "id" : 12,
-        "nome": "Transporte"
-      }
-    ]
-      
-  }
+  "categoria": [
+    {
+      "id" : "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
+      "nome": "Emprestimos",
+      "tipo": "receita"
+    },
+    {
+      "id" : "d30e1bf3-90d8-4d82-a1ce-5808c87ad95d",
+      "nome": "Investimentos",
+      "tipo": "receita"
+    },
+    {
+      "id" : "4bde98ec-b3e3-4f9c-b392-e78a919f4505",
+      "nome": "Outras Receitas",
+      "tipo": "receita"
+    },
+    {
+      "id" : "7db84f6e-057c-42f9-a53f-17619c28e070",
+      "nome": "Salário",
+      "tipo": "receita"
+    },
+    {
+      "id" : "f1ee6cb8-f577-4d5f-a700-34723dba3bad",
+      "nome": "Alimentação",
+      "tipo": "despesa"
+    },
+    {
+      "id" : "40042151-37c2-4c34-bf6c-54fa10904e7a",
+      "nome": "Assinaturas e Serviços",
+      "tipo": "despesa"
+    },
+    {
+      "id" : "170f426c-c9d5-4053-8732-30a6af43edbe",
+      "nome": "Bares e Restaurantes",
+      "tipo": "despesa"
+    },
+    {
+      "id" : "81ac5831-27bd-4159-8d7e-96a2a76394c9",
+      "nome": "Casa",
+      "tipo": "despesa"
+    },
+    {
+      "id" : "1a1b1293-484a-4e1a-a77b-6e70bdab229e",
+      "nome": "Compras",
+      "tipo": "despesa"
+    },
+    {
+      "id" : "45db3b4c-2d5c-40af-8a6d-4e47743cde32",
+      "nome": "Cuidados Pessoais",
+      "tipo": "despesa"
+    },
+    {
+      "id" : "556f21ab-520b-41f9-8004-ae071ee3077f",
+      "nome": "Dívidas",
+      "tipo": "despesa"
+    },
+    {
+      "id" : "ed821cfc-26aa-4f91-a518-6077c9620b6d",
+      "nome": "Educação",
+      "tipo": "despesa"
+    },
+    {
+      "id" : "453d99b9-f7c1-4ad1-958a-39902b224c4f",
+      "nome": "Lazer",
+      "tipo": "despesa"
+    },
+    {
+      "id" : "c74882da-0639-41b6-81da-00aa3e839793",
+      "nome": "Mercado",
+      "tipo": "despesa"
+    },
+    {
+      "id" : "b969cb13-cfb1-4d61-9a7d-2fc042546c19",
+      "nome": "Saúde",
+      "tipo": "despesa"
+    },
+    {
+      "id" : "c5438ceb-8e0c-48e2-be18-330d994561e8",
+      "nome": "Transporte",
+      "tipo": "despesa"
+    }   
+  ]
 }
