@@ -4,9 +4,7 @@
   "description": "Simple json database to deploy to the host of your choice",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "heroku-postbuild": "json-server db.json --routes routes.json --prod",
-    "build": "node server.js --routes routes.json"
+    "start": "node server.js"
   },
   "keywords": [
     "json-server,heroku, node, REST API"
