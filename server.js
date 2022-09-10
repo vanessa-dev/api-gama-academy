@@ -33,63 +33,57 @@ function isAuthenticated({email, password}){
 
 // Registrando novo usuário.
 server.post('/auth/register', (req, res) => {
-  console.log("register endpoint called; request body:");
-  console.log(req.body);
   const {email, password} = req.body;
 
   if(isAuthenticated({email, password}) === true) {
     const status = 401;
-    const message = 'Email and Password already exist';
+    const message = 'Email e senha já existem.';
     res.status(status).json({status, message});
     return
   }
 
-fs.readFile("./users.json", (err, data) => {  
-  if (err) {
-    const status = 401
-    const message = err
-    res.status(status).json({status, message})
-    return
-  };
+  fs.readFile("./users.json", (err, data) => {  
+    if (err) {
+      const status = 401
+      const message = err
+      res.status(status).json({status, message})
+      return
+    };
 
-  // Pegando os dados atual.
-  var data = JSON.parse(data.toString());
+    // Pegando os dados atual.
+    var data = JSON.parse(data.toString());
 
-  // Pegando o id do ultimo usuário.
-  var last_item_id = data.users[data.users.length-1].id;
+    // Pegando o id do ultimo usuário.
+    var last_item_id = data.users[data.users.length-1].id;
 
-  //Adicionando novo usuário
-  data.users.push({id: last_item_id + 1, email: email, password: password}); //add some data
-  var writeData = fs.writeFile("./users.json", JSON.stringify(data), (err, result) => {  // WRITE
-      if (err) {
-        const status = 401
-        const message = err
-        res.status(status).json({status, message})
-        return
-      }
+    //Adicionando novo usuário
+    data.users.push({id: last_item_id + 1, email: email, password: password});
+    var writeData = fs.writeFile("./users.json", JSON.stringify(data), (err, result) => {  
+        if (err) {
+          const status = 401
+          const message = err
+          res.status(status).json({status, message})
+          return
+        }
+    });
   });
-});
 
-// Criando token para novo usuário
-const access_token = createToken({email, password})
-  console.log("Token de acesso:" + access_token);
+  // Criando token para novo usuário
+  const access_token = createToken({email, password})
   res.status(200).json({access_token})
-})
+});
 
 // Logando com um dos usuarios em  ./users.json
 server.post('/auth/login', (req, res) => {
-  console.log("login endpoint called; request body:");
-  console.log(req.body);
   const {email, password} = req.body;
   if (isAuthenticated({email, password}) === false) {
     const status = 401
     const message = 'Email ou senha inválido.'
     res.status(status).json({status, message})
-    return
+    return;
   }
-  const access_token = createToken({email, password})
-  console.log("Access Token:" + access_token);
-  res.status(200).json({access_token})
+  const access_token = createToken({email, password});
+  res.status(200).json({access_token});
 })
 
 server.use(/^(?!\/auth).*$/,  (req, res, next) => {
