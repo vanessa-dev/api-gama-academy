@@ -4,7 +4,8 @@
   "description": "Simple json database to deploy to the host of your choice",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js --routes routes.json"
+    "start": "node server.js --routes routes.json",
+    "start-auth": "node server.js"
   },
   "keywords": [
     "json-server,heroku, node, REST API"
@@ -12,6 +13,8 @@
   "author": "Jesper Orb",
   "license": "ISC",
   "dependencies": {
-    "json-server": "^0.17.0"
+    "body-parser": "^1.19.0",
+    "json-server": "^0.17.0",
+    "jsonwebtoken": "^8.1.0"
   }
 }
