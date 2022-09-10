@@ -95,19 +95,19 @@ server.use(/^(?!\/auth).*$/,  (req, res, next) => {
   }
   try {
     let verifyTokenResult;
-     verifyTokenResult = verifyToken(req.headers.authorization.split(' ')[1]);
+    verifyTokenResult = verifyToken(req.headers.authorization.split(' ')[1]);
 
-     if (verifyTokenResult instanceof Error) {
-       const status = 401
-       const message = 'Token de acesso não fornecido'
-       res.status(status).json({status, message})
-       return
-     }
-     next()
+    if (verifyTokenResult instanceof Error) {
+      const status = 401;
+      const message = 'Token de acesso não fornecido';
+      res.status(status).json({status, message});
+      return;
+    }
+    next()
   } catch (err) {
-    const status = 401
-    const message = 'Token expirado'
-    res.status(status).json({status, message})
+    const status = 401;
+    const message = 'Token expirado';
+    res.status(status).json({status, message});
   }
 })
 
