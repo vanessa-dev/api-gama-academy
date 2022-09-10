@@ -1,3 +1,5 @@
+require('dotenv').config();
+const bcrypt = require('bcryptjs');
 const fs = require('fs');
 const bodyParser = require('body-parser');
 const jsonServer = require('json-server');
