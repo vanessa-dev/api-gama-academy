@@ -28,7 +28,8 @@ function verifyToken(token){
 
 // Checando se o usuario existe no banco de dados.
 function isAuthenticated({email, password}){
-  return userdb.users.findIndex(user => user.email === email && user.password === password) !== -1
+  const user_from_db = userdb.users.find(user => user.email === email);
+  return user_from_db && bcrypt.compareSync(password, user_from_db.password);
 }
 
 // Registrando novo usuário.
