@@ -37,10 +37,10 @@ server.post('/auth/register', (req, res) => {
   const {email, password} = req.body;
   const salt = bcrypt.genSaltSync(10);
   const hash = bcrypt.hashSync(password, salt);
-  
-  if(isAuthenticated({email, password}) === true) {
+  const email_existente = userdb.users.findIndex(user => user.email === email);
+  if(email_existente !== -1) {
     const status = 401;
-    const message = 'Email e senha já existem.';
+    const message = 'Email já existe.';
     res.status(status).json({status, message});
     return
   }
@@ -115,5 +115,4 @@ server.use(/^(?!\/auth).*$/,  (req, res, next) => {
 })
 
 server.use(router)
-
 server.listen(port);
