@@ -34,7 +34,9 @@ function isAuthenticated({email, password}){
 // Registrando novo usuário.
 server.post('/auth/register', (req, res) => {
   const {email, password} = req.body;
-
+  const salt = bcrypt.genSaltSync(10);
+  const hash = bcrypt.hashSync(password, salt);
+  
   if(isAuthenticated({email, password}) === true) {
     const status = 401;
     const message = 'Email e senha já existem.';
@@ -57,7 +59,7 @@ server.post('/auth/register', (req, res) => {
     var last_item_id = data.users[data.users.length-1].id;
 
     //Adicionando novo usuário
-    data.users.push({id: last_item_id + 1, email: email, password: password});
+    data.users.push({id: last_item_id + 1, email: email, password: hash});
     var writeData = fs.writeFile("./users.json", JSON.stringify(data), (err, result) => {  
         if (err) {
           const status = 401

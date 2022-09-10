@@ -1,1 +1,1 @@
-{"users":[{"id":1,"email":"bruno@email.com","password":"bruno"},{"id":2,"email":"techie@email.com","password":"techie"},{"id":3,"email":"vanessateste2@gmail.com","password":"teste123"}]}
+{"users":[{"id":1,"email":"bruno@email.com","password":"bruno"},{"id":2,"email":"techie@email.com","password":"techie"},{"id":3,"email":"vanessateste2@gmail.com","password":"teste123"},{"id":4,"email":"vanessatester2@gmail.com","password":"teste123"},{"id":5,"email":"testehash@gmail.com","password":"$2a$10$dA5miXoAD6CEx86a1wYSuOX0.5nLwBzvn4zQPOC227QIjgbpJRgLS"}]}
