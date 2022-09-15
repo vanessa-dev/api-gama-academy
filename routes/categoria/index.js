@@ -42,6 +42,10 @@ function listCategory (req, res) {
   }
 }
 
+function updateCategory (req, res) {
+
+}
+
 function deleteCategory(req, res) {
   const empty_object_params = Object.entries(req.params).length === 0;
   if (!empty_object_params) {
@@ -74,4 +78,4 @@ function deleteCategory(req, res) {
   }
 }
 
-module.exports = {createCategory, listCategory, deleteCategory}
+module.exports = {createCategory, listCategory, updateCategory, deleteCategory}
