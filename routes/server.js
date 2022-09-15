@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const jsonServer = require('json-server');
 
 const {createUser, login, verifyAuth} = require("./auth/index.js");
-const {createCategory, listCategory} = require("./categoria/index.js");
+const {createCategory, listCategory, deleteCategory} = require("./categoria/index.js");
 
 const server = jsonServer.create();
 const port = process.env.PORT || 4000;
@@ -21,6 +21,7 @@ server.use(/^(?!\/auth).*$/, (req, res, next) => verifyAuth(req, res, next));
 server.post('/categoria', (req, res) => createCategory(req, res));
 server.get('/categoria', (req, res) => listCategory(req, res));
 server.get('/categoria/:id', (req, res) => listCategory(req, res));
+server.delete('/categoria/:id', (req, res) => deleteCategory(req, res));
 
 
 

@@ -1,6 +1,6 @@
 const fs = require('fs');
 const { v4: uuidv4 } = require('uuid');
-const { categoria } = JSON.parse(fs.readFileSync('db.json'), {encoding:'utf8'});
+const { categoria, transacao } = JSON.parse(fs.readFileSync('db.json'), {encoding:'utf8'});
 
 
 function createCategory(req, res) {
@@ -22,7 +22,7 @@ function createCategory(req, res) {
         res.status(status).json({status, message})
         return
       }
-      console.log(result)
+
       res.status(201).json(add_data);
     });
   });
@@ -32,7 +32,6 @@ function listCategory (req, res) {
   const empty_object_params = Object.entries(req.params).length === 0;
   const empty_object_query = Object.entries(req.query).length === 0;
   if (!empty_object_params) {
-    console.log(req.params);
     const category_filter =   categoria.filter( item => item.id == req.params.id);
     res.status(200).json(category_filter);
   } else if (!empty_object_query) {
@@ -42,9 +41,37 @@ function listCategory (req, res) {
     res.status(200).json(categoria);
   }
 }
-// server.delete('/categoria',  (req, res, next) => {
-//   res.status(201).json({status: "201", message: "Funcionou!!!"});
-//   return;
-// });
 
-module.exports = {createCategory, listCategory}
+function deleteCategory(req, res) {
+  const empty_object_params = Object.entries(req.params).length === 0;
+  if (!empty_object_params) {
+    const transacao_filter =   transacao.filter( item => item.categoria == req.params.id);
+    if(transacao_filter.length > 0) {
+      res.status(403).json({message: "Não e possivel excluir essa categoria, pois existe transação associada a ela"});
+    } else {
+      fs.readFile("./db.json", (err, data) => {  
+        if (err) {
+          const status = 401
+          const message = err
+          res.status(status).json({status, message})
+          return
+        };
+        
+        var data = JSON.parse(data.toString());
+        const delete_category =  data.categoria.findIndex(item => item.id == req.params.id );
+        data.categoria.splice(delete_category, 1);
+        fs.writeFile("./db.json", JSON.stringify(data), (err, result) => {  
+          if (err) {
+            const status = 401
+            const message = err
+            res.status(status).json({status, message})
+            return
+          }
+          res.status(200).json({});
+        });
+      });
+    }
+  }
+}
+
+module.exports = {createCategory, listCategory, deleteCategory}
