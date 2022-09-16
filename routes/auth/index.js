@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 
 const SECRET_KEY = process.env.SECRET_KEY;
-const expiresIn = '1d';
+const expiresIn = '7d';
 const userdb = JSON.parse(fs.readFileSync('users.json', {encoding:'utf8'}));
 
 

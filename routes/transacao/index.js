@@ -4,7 +4,7 @@ const { transacao } = JSON.parse(fs.readFileSync('db.json'), {encoding:'utf8'});
 
 
 function createTransaction(req, res) {
-  fs.readFile("./db.json", (err, data) => {  
+  fs.readFile("./db.json", (err, data_transacao) => {  
     if (err) {
       const status = 401
       const message = err
@@ -12,7 +12,7 @@ function createTransaction(req, res) {
       return
     };
 
-    var data = JSON.parse(data.toString());
+    var data_transacao = JSON.parse(data_transacao.toString());
     const { tipo, valor, categoria, descricao, data } = req.body;
     const add_data =  {
       id: uuidv4(),  
@@ -22,8 +22,8 @@ function createTransaction(req, res) {
       descricao, 
       data
     };
-    data.transacao.push(add_data);
-    fs.writeFile("./db.json", JSON.stringify(data), (err, result) => {  
+    data_transacao.transacao.push(add_data);
+    fs.writeFile("./db.json", JSON.stringify(data_transacao), (err, result) => {  
       if (err) {
         const status = 401
         const message = err
@@ -46,7 +46,7 @@ function listTransaction (req, res) {
     const transaction_filter_query =   transacao.filter(item => item.descricao == req.query.descricao);
     res.status(200).json(transaction_filter_query);
   } else {
-    res.status(200).json(categoria);
+    res.status(200).json(transacao);
   }
 }
 
