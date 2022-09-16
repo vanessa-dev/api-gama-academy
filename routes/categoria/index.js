@@ -78,7 +78,9 @@ function updateCategory (req, res) {
         });
       };
       res.status(404).json({message: "Categoria não encontrada."});
+      return;
     });
+    return;
   }
   res.status(400).json({message: "Necessario fornecer id da categoria a ser atualizada."});
 }
@@ -109,9 +111,11 @@ function deleteCategory(req, res) {
             return
           }
           res.status(200).json({});
+          return;
         });
       });
     }
+    return;
   }
   res.status(400).json({message: "Necessario fornecer id da categoria a ser deletada."});
 }

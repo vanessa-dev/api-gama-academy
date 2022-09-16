@@ -87,8 +87,10 @@ function updateTransaction (req, res) {
           return;
         });
         res.status(404).json({message: "Transação não encontrada."});
+        return;
       };
     });
+    return;
   }
   res.status(400).json({message: "Necessario fornecer id do usuario a ser atualizado."});
 }
@@ -115,8 +117,10 @@ function deleteTransaction(req, res) {
           return
         }
         res.status(200).json({});
+        return;
       });
     });
+    return;
   }
   res.status(400).json({message: "Necessario fornecer id da transação a ser deletada."});
 }
