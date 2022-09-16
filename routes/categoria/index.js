@@ -76,6 +76,7 @@ function updateCategory (req, res) {
           res.status(200).json(add_data);
           return;
         });
+        return;
       };
       res.status(404).json({message: "Categoria não encontrada."});
       return;

@@ -86,9 +86,10 @@ function updateTransaction (req, res) {
           res.status(200).json(add_data);
           return;
         });
-        res.status(404).json({message: "Transação não encontrada."});
         return;
       };
+      res.status(404).json({message: "Transação não encontrada."});
+      return;
     });
     return;
   }
