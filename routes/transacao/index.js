@@ -51,7 +51,43 @@ function listTransaction (req, res) {
 }
 
 function updateTransaction (req, res) {
+  const empty_object_params = Object.entries(req.params).length === 0;
+  if (!empty_object_params) {
+    fs.readFile("./db.json", (err, data_transacao) => {  
+      if (err) {
+        const status = 401
+        const message = err
+        res.status(status).json({status, message})
+        return
+      };
+      
+      var data_transacao = JSON.parse(data_transacao.toString());
+      const { tipo, valor, categoria, descricao, data } = req.body;
+      const data_update =  data_transacao.transacao.find(item => item.id == req.params.id);
+      const index_update =  data_transacao.transacao.findIndex(item => item.id == req.params.id);
 
+      if (index_update != -1) {
+        const add_data =  {
+          id:  req.params.id,
+          tipo:  tipo ? tipo : data_update.tipo,
+          valor:  valor ? valor : data_update.valor,
+          categoria:  categoria ? categoria : data_update.categoria,
+          descricao:  descricao ? descricao : data_update.descricao,
+          data:  data ? data : data_update.data
+        }
+        data_transacao.transacao[index_update] = add_data;
+        fs.writeFile("./db.json", JSON.stringify(data_transacao), (err, result) => {  
+          if (err) {
+            const status = 401
+            const message = err
+            res.status(status).json({status, message})
+            return
+          }
+          res.status(200).json(add_data);
+        });
+      };
+    });
+  }
 }
 
 function deleteTransaction(req, res) {
@@ -66,8 +102,8 @@ function deleteTransaction(req, res) {
       };
       
       var data = JSON.parse(data.toString());
-      const delete_transaction =  data.categoria.findIndex(item => item.id == req.params.id );
-      data.categoria.splice(delete_transaction, 1);
+      const delete_transaction =  data.transacao.findIndex(item => item.id == req.params.id );
+      data.transacao.splice(delete_transaction, 1);
       fs.writeFile("./db.json", JSON.stringify(data), (err, result) => {  
         if (err) {
           const status = 401
@@ -78,7 +114,6 @@ function deleteTransaction(req, res) {
         res.status(200).json({});
       });
     });
-    
   }
 }
 
