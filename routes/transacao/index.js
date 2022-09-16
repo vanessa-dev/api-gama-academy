@@ -84,10 +84,13 @@ function updateTransaction (req, res) {
             return
           }
           res.status(200).json(add_data);
+          return;
         });
+        res.status(404).json({message: "Transação não encontrada."});
       };
     });
   }
+  res.status(400).json({message: "Necessario fornecer id do usuario a ser atualizado."});
 }
 
 function deleteTransaction(req, res) {
@@ -115,6 +118,7 @@ function deleteTransaction(req, res) {
       });
     });
   }
+  res.status(400).json({message: "Necessario fornecer id da transação a ser deletada."});
 }
 
 module.exports = {createTransaction, listTransaction, updateTransaction, deleteTransaction}
