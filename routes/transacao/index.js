@@ -35,20 +35,31 @@ function createTransaction(req, res) {
   });
 }
 
+function retornaTransacaoComCategoria (item) {
+  let obj_categoria = categoria.find(item_categoria => item.categoria == item_categoria.id);
+  return {
+   id: item.id,
+   valor: item.valor,
+   categoria: obj_categoria,
+   descricao: item.descricao,
+   data: item.data
+  }
+}
+
 function listTransaction (req, res) {
   const empty_object_params = Object.entries(req.params).length === 0;
   const empty_object_query = Object.entries(req.query).length === 0;
   if (!empty_object_params) {
     const transaction_filter =   transacao.filter( item => item.id == req.params.id);
-    transaction_filter.map( item_transacao => item_transacao.categoria = categoria.find( item_categoria => item_transacao.categoria == item_categoria.id));
-    res.status(200).json(transaction_filter);
+    let transacao_categoria = transaction_filter.map(retornaTransacaoComCategoria);
+    res.status(200).json(transacao_categoria);
   } else if (!empty_object_query) {
     const transaction_filter_query =   transacao.filter(item => item.descricao == req.query.descricao);
-    transaction_filter_query.map( item_transacao => item_transacao.categoria = categoria.find( item_categoria => item_transacao.categoria == item_categoria.id));
-    res.status(200).json(transaction_filter_query);
+    let transacao_categoria = transaction_filter_query.map(retornaTransacaoComCategoria);
+    res.status(200).json(transacao_categoria);
   } else {
-    transacao.map( item_transacao => item_transacao.categoria = categoria.find( item_categoria => item_transacao.categoria == item_categoria.id));
-    res.status(200).json(transacao);
+    let transacao_categoria =  transacao.map(retornaTransacaoComCategoria);
+    res.status(200).json(transacao_categoria);
   }
 }
 
