@@ -1,4 +1,0 @@
-{
-  "/categoria/:tipo": "/categoria?tipo=:tipo",
-  "/categoria/:tipo/:id": "/categoria?tipo=:tipo&id=:id"
-}

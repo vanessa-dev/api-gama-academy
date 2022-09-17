@@ -2,9 +2,10 @@
   "name": "json-server-deploy",
   "version": "1.0.0",
   "description": "Simple json database to deploy to the host of your choice",
-  "main": "server.js",
+  "main": "./routes/server.js",
   "scripts": {
-    "start": "node server.js --routes routes.json"
+    "start": "node ./routes/server.js",
+    "dev": "nodemon ./routes/server.js"
   },
   "keywords": [
     "json-server,heroku, node, REST API"
@@ -12,6 +13,11 @@
   "author": "Jesper Orb",
   "license": "ISC",
   "dependencies": {
-    "json-server": "^0.17.0"
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "dotenv": "^16.0.2",
+    "json-server": "^0.17.0",
+    "jsonwebtoken": "^8.1.0",
+    "uuid": "^9.0.0"
   }
 }
