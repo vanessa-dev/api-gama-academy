@@ -1,6 +1,6 @@
 const fs = require('fs');
 const { v4: uuidv4 } = require('uuid');
-const { transacao } = JSON.parse(fs.readFileSync('db.json'), {encoding:'utf8'});
+const { transacao, categoria } = JSON.parse(fs.readFileSync('db.json'), {encoding:'utf8'});
 
 
 function createTransaction(req, res) {
@@ -13,10 +13,9 @@ function createTransaction(req, res) {
     };
 
     var data_transacao = JSON.parse(data_transacao.toString());
-    const { tipo, valor, categoria, descricao, data } = req.body;
+    const {  valor, categoria, descricao, data } = req.body;
     const add_data =  {
       id: uuidv4(),  
-      tipo, 
       valor, 
       categoria, 
       descricao, 
@@ -41,11 +40,14 @@ function listTransaction (req, res) {
   const empty_object_query = Object.entries(req.query).length === 0;
   if (!empty_object_params) {
     const transaction_filter =   transacao.filter( item => item.id == req.params.id);
+    transaction_filter.map( item_transacao => item_transacao.categoria = categoria.find( item_categoria => item_transacao.categoria == item_categoria.id));
     res.status(200).json(transaction_filter);
   } else if (!empty_object_query) {
     const transaction_filter_query =   transacao.filter(item => item.descricao == req.query.descricao);
+    transaction_filter_query.map( item_transacao => item_transacao.categoria = categoria.find( item_categoria => item_transacao.categoria == item_categoria.id));
     res.status(200).json(transaction_filter_query);
   } else {
+    transacao.map( item_transacao => item_transacao.categoria = categoria.find( item_categoria => item_transacao.categoria == item_categoria.id));
     res.status(200).json(transacao);
   }
 }
@@ -62,14 +64,13 @@ function updateTransaction (req, res) {
       };
       
       var data_transacao = JSON.parse(data_transacao.toString());
-      const { tipo, valor, categoria, descricao, data } = req.body;
+      const {  valor, categoria, descricao, data } = req.body;
       const data_update =  data_transacao.transacao.find(item => item.id == req.params.id);
       const index_update =  data_transacao.transacao.findIndex(item => item.id == req.params.id);
 
       if (index_update != -1) {
         const add_data =  {
           id:  req.params.id,
-          tipo:  tipo ? tipo : data_update.tipo,
           valor:  valor ? valor : data_update.valor,
           categoria:  categoria ? categoria : data_update.categoria,
           descricao:  descricao ? descricao : data_update.descricao,
