@@ -21,4 +21,8 @@ function gerarUID() {
   return uuidv4();
 }
 
-module.exports = {buscarTransacao, gerarUID}
+function LancamentoComCategoria (id) {
+ return transacao.filter( item => item.categoria == id).length > 0;
+}
+
+module.exports = {buscarTransacao, gerarUID, LancamentoComCategoria}
