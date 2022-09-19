@@ -9,10 +9,10 @@ server.use(middlewares);
 //middleware
 server.use(jsonServer.bodyParser);
 server.use((req, res, next) => {
-  if (req.method === 'GET' && req.originalUrl.includes("/transacao")) {
-    res.status(200).json(buscarTransacao());
-    return;
-  }
+  // if (req.method === 'GET' && req.originalUrl.includes("/transacao")) {
+  //   res.status(200).json(buscarTransacao());
+  //   return;
+  // }
 
   if (req.method === 'POST') {
     req.body.id = gerarUID();
