@@ -26,6 +26,7 @@ server.use((req, res, next) => {
       return;
     }
     next();
+    return;
   }
   // Continue to JSON Server router
   next();
