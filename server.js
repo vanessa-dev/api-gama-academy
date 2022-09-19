@@ -6,6 +6,7 @@ const port = process.env.PORT || 3000;
 const {buscarTransacao, gerarUID, LancamentoComCategoria} = require("./middlewares/index.js");
 server.use(middlewares);
 
+//middleware
 server.use(jsonServer.bodyParser);
 server.use((req, res, next) => {
   if (req.method === 'GET' && req.originalUrl.includes("/transacao")) {

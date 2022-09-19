@@ -2,7 +2,6 @@
   "transacao":[
     {
       "id" : "4fd6f07f-3de7-4155-8712-ad111d0b0892",
-      "tipo": "receita",
       "valor" : 2.99,
       "categoria": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
       "descricao": "Meu primeiro lancamento de entrada",
@@ -10,7 +9,6 @@
     },
     {
       "id" : "3b715689-b1aa-4669-b834-49ab252b2489",
-      "tipo": "despesa",
       "valor" : 5.99,
       "categoria": "40042151-37c2-4c34-bf6c-54fa10904e7a",
       "descricao": "Meu primeiro lancamento de saida",
