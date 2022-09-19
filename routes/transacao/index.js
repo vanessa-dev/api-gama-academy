@@ -25,6 +25,8 @@ function createTransaction(req, res) {
     data_transacao.transacao.push(add_data);
     console.log(data_transacao.transacao, "step 2");
     fs.writeFile("./db.json", JSON.stringify(data_transacao), (err, result) => {  
+      console.log(result);
+      console.log(transacao, 'final');
       if (err) {
         const status = 401
         const message = err
