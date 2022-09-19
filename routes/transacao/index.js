@@ -26,7 +26,8 @@ function createTransaction(req, res) {
     console.log(data_transacao.transacao, "step 2");
     fs.writeFile("db.json", JSON.stringify(data_transacao), (err, result) => {  
       console.log(result);
-      console.log(transacao, 'final');
+      console.log(transacao, 'final direto do json');
+      console.log(data_transacao, 'final direto do req');
       if (err) {
         const status = 401
         const message = err
