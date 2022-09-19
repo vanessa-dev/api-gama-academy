@@ -1,4 +1,5 @@
 const fs = require('fs');
+const { v4: uuidv4 } = require('uuid');
 const { transacao, categoria } = JSON.parse(fs.readFileSync('db.json'), {encoding:'utf8'});
 
 function retornaTransacaoComCategoria (item) {
@@ -16,4 +17,8 @@ function buscarTransacao() {
  return transacao.map(retornaTransacaoComCategoria);
 }
 
-module.exports = {buscarTransacao}
+function gerarUID() {
+  return uuidv4();
+}
+
+module.exports = {buscarTransacao, gerarUID}
