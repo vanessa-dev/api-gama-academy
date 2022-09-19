@@ -5,6 +5,7 @@ const { transacao, categoria } = JSON.parse(fs.readFileSync('db.json'), {encodin
 
 function createTransaction(req, res) {
   fs.readFile("./db.json", (err, data_transacao) => {  
+    console.log(data_transacao, "step 1");
     if (err) {
       const status = 401
       const message = err
@@ -22,6 +23,7 @@ function createTransaction(req, res) {
       data
     };
     data_transacao.transacao.push(add_data);
+    console.log(data_transacao.transacao, "step 2");
     fs.writeFile("./db.json", JSON.stringify(data_transacao), (err, result) => {  
       if (err) {
         const status = 401
